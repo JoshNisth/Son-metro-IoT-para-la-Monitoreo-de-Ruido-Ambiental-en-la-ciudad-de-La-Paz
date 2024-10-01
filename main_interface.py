@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import messagebox
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
-
+from dashboards import ejecutar_todo
 # Conectar a la base de datos
 def conectar():
     conexion = mysql.connector.connect(
@@ -127,6 +127,10 @@ def graficar_datos(id_usuario, id_serie, tipo_serie):
     except Exception as e:
         messagebox.showerror("Error", str(e))
 
+# Función que se llamará cuando se presione el botón
+def abrir_nueva_interfaz():
+    ejecutar_todo()
+    
 # Abrir la interfaz principal
 def abrir_interfaz_principal(id_usuario):
     global entry_terminos, frame_canvas
@@ -154,6 +158,9 @@ def abrir_interfaz_principal(id_usuario):
     # Botón para insertar valores y graficar
     btn_insertar_y_graficar = Button(frame_superior, text="Insertar y Graficar", command=lambda: insertar_y_graficar(id_usuario, seleccion_serie.get()))
     btn_insertar_y_graficar.pack(pady=5)
+    # Nuevo botón para redirigir a otra interfaz
+    btn_redirigir = Button(frame_superior, text="Ir a otra interfaz", command=abrir_nueva_interfaz)
+    btn_redirigir.pack(pady=5)
 
     # Frame inferior para el gráfico
     frame_inferior = Frame(root)

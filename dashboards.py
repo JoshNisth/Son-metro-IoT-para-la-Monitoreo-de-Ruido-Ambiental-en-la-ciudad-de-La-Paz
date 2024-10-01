@@ -7,7 +7,7 @@ def conectar():
         user="root",
         password="",
         #port="3307",
-        database="sonometro2"
+        database="sonometro"
     )
     return conexion
 
@@ -209,6 +209,29 @@ def crear_grafico_barras_rango_ruido(datos):
     plt.title('Número de Registros por Rango de Ruido')
     plt.tight_layout()
     plt.show()
+
+#prueba
+def ejecutar_todo():
+    # Gráficos por tipo de serie
+    datos_serie = obtener_datos_nserie()
+    crear_grafico_barras_nserie(datos_serie)
+    crear_grafico_torta_nserie(datos_serie)
+    
+    # Gráficos por usuario
+    datos_usuarios = obtener_datos_usuarios()
+    crear_grafico_barras_usuarios(datos_usuarios)
+    crear_grafico_torta_usuarios(datos_usuarios)
+    
+    # Nuevas gráficas
+    datos_ruido_promedio = obtener_datos_ruido_promedio_por_usuario()
+    crear_grafico_barras_ruido_promedio_por_usuario(datos_ruido_promedio)
+    
+    datos_ruido_vs_error = obtener_datos_ruido_vs_error()
+    crear_grafico_ruido_vs_error(datos_ruido_vs_error)
+    
+    datos_rangos_ruido = obtener_datos_por_rangos_ruido()
+    crear_grafico_barras_rango_ruido(datos_rangos_ruido)
+
 
 if __name__ == "__main__":
     # Gráficos por tipo de serie
