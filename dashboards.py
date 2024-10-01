@@ -6,7 +6,7 @@ def conectar():
         host="localhost",
         user="root",
         password="",
-        port="3307",
+        #port="3307",
         database="sonometro2"
     )
     return conexion
